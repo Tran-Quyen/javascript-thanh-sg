@@ -227,6 +227,7 @@
 // console.log('Toi la: ' + firstName + ' ' + lastName);
 // Template ES6 (khi dùng `` và ${<variable>} sẽ tự convert sang string)
 // console.log(`Toi la: ${firstName} ${lastName}`);
+
 // 6=============================================================
 // Work With String
 // Keyword: JavaScript string methods
