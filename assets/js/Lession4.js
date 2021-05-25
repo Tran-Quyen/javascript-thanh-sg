@@ -594,38 +594,38 @@
 
 // console.log(findEqualValues(array1, array2));
 
-var courses = [
-  {
-    id: 1,
-    name: 'Javascript',
-    coin: 0,
-  },
-  {
-    id: 2,
-    name: 'HTML, CSS',
-    coin: 250,
-  },
-  {
-    id: 3,
-    name: 'Ruby',
-    coin: 0,
-  },
-  {
-    id: 4,
-    name: 'PHP',
-    coin: 400,
-  },
-  {
-    id: 5,
-    name: 'ReactJS',
-    coin: 500,
-  },
-  {
-    id: 6,
-    name: 'Ruby',
-    coin: 50,
-  },
-];
+// var courses = [
+//   {
+//     id: 1,
+//     name: 'Javascript',
+//     coin: 0,
+//   },
+//   {
+//     id: 2,
+//     name: 'HTML, CSS',
+//     coin: 250,
+//   },
+//   {
+//     id: 3,
+//     name: 'Ruby',
+//     coin: 0,
+//   },
+//   {
+//     id: 4,
+//     name: 'PHP',
+//     coin: 400,
+//   },
+//   {
+//     id: 5,
+//     name: 'ReactJS',
+//     coin: 500,
+//   },
+//   {
+//     id: 6,
+//     name: 'Ruby',
+//     coin: 50,
+//   },
+// ];
 
 //6. map()
 // originArray là root array trỏ tới cùng vùng nhớ của courses nó trả về data root array truyền vào,
@@ -683,3 +683,91 @@ var courses = [
 
 // var totalCoin = courses.reduce(coinHandler, 0); //(function,<initial value>) <intinal value> có thể là bất kỳ datatype gì mà bạn mong muốn trả về
 // console.log(totalCoin);
+
+// Khi xài thực tế sẽ ngắn gọn hơn
+// var totalCoin = courses.reduce(function (accumulator, currentValue) {
+//   return accumulator + currentValue.coin;
+// }, 0); //(function,<initial value>) <intinal value> có thể là bất kỳ datatype gì mà bạn mong muốn trả về
+// console.log(totalCoin);
+
+// Cụ thể
+// var totalCoin = courses.reduce(function (total, course) {
+//   return total + course.coin;
+// }, 0); //(function,<initial value>) <intinal value> có thể là bất kỳ datatype gì
+// console.log(totalCoin);
+
+// Note: Khi k0 truyền initial value thì lần 1 accumulator sẽ lây thằng đầu và currentValue lấy thằng thứ 2
+// còn khi sử dụng initial value thì sẽ lần 1 chỉ lấy initial value và value của thằng đầu tiên trong array
+// và lấy luôn kiểu data của el đầu tiên trong arr để làm kiểu trả về
+
+// Sử dụng k0 truyền khi kiểu trả về đã đúng mong muốn như ví dụ
+// var numbers = [100, 200, 220, 200, 480];
+// var totalNumber = numbers.reduce(function (total, number) {
+//   return total + number;
+// });
+
+// var totalNumber = numbers.reduce((total, number) => total + number);
+// console.log(totalNumber);
+
+// Flat - "Làm phẳng" mảng từ Depth array - "Mảng sâu"
+// var depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9]];
+// console.log(depthArray);
+
+// var flatArray = depthArray.reduce((flatOutput, depthItem) => {
+//   return flatOutput.concat(depthItem);
+// }, []); //trả về array
+
+// console.log(flatArray);
+
+// Lấy ra các khóa học đưa vào mảng mới
+// var topics = [
+//   {
+//     topic: 'Front-end',
+//     courses: [
+//       {
+//         id: 1,
+//         title: 'HTML, CSS',
+//       },
+//       {
+//         id: 2,
+//         title: 'Javascript',
+//       },
+//     ],
+//   },
+//   {
+//     topic: 'Back-end',
+//     courses: [
+//       {
+//         id: 1,
+//         title: 'PHP',
+//       },
+//       {
+//         id: 2,
+//         title: 'NodeJS',
+//       },
+//     ],
+//   },
+// ];
+
+// var newCourses = topics.reduce((courses, topic) => {
+//   return courses.concat(topic.courses);
+// }, []); //trả về array
+
+// console.log(newCourses);
+
+// var htmls = newCourses.map((course) => {
+//   return `
+//   <div>
+//     <h2>ID: ${course.id}</h2>
+//     <p>Title: ${course.title}</p>
+//   </div>
+//   `;
+// });
+
+// console.log(htmls);
+
+// console.log(htmls.join(''));
+// var divNode = document.getElementById('courses');
+
+// console.log(divNode);
+// divNode.innerHTML = htmls.join('');
