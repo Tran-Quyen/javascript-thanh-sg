@@ -73,7 +73,7 @@
 // myCallBack(123);
 // myFunction(myCallBack);
 
-var courses = ['Javascript', 'PHP', 'Ruby'];
+// var courses = ['Javascript', 'PHP', 'Ruby'];
 
 // var htmls = courses.map(function (course) {
 //   // Anonymous function
@@ -111,3 +111,215 @@ var courses = ['Javascript', 'PHP', 'Ruby'];
 // Object Prototype
 // For Loop
 // hasOwnProperty
+// Data for testing
+// var courses = [
+//   { id: 1, name: 'Javascript', price: 500 },
+//   { id: 2, name: 'Dart', price: 0 },
+//   { id: 3, name: 'Ruby', price: 500 },
+//   { id: 4, name: 'PHP', price: 0 },
+//   { id: 5, name: 'NodeJS', price: 500 },
+// ];
+
+// forEach2
+// Array.prototype.forEach2 = function (callback) {
+//   for (index in this) {
+//     if (this.hasOwnProperty(index)) {
+//       callback(this[index], index, this);
+//     }
+//   }
+// };
+
+// courses.forEach2((course, index) => {
+//   console.log(index, course);
+// });
+
+// find2
+// Array.prototype.find2 = function (callback) {
+//   for (index in this) {
+//     if (this.hasOwnProperty(index)) {
+//       var result = callback(this[index], index, this);
+//       if (result) {
+//         return this[index];
+//       }
+//     }
+//   }
+//   return undefined;
+// };
+
+// var rubyCourse = courses.find2((course, index) => {
+//   return course.name === 'Ruby';
+// });
+
+// console.log(rubyCourse);
+
+// filter2
+// Array.prototype.filter2 = function (callback) {
+//   var output = [];
+
+//   for (index in this) {
+//     if (this.hasOwnProperty(index)) {
+//       var result = callback(this[index], index, this);
+//       if (result) {
+//         output.push(this[index]);
+//       }
+//     }
+//   }
+
+//   return output;
+// };
+
+// var price500 = courses.filter2((course, index) => {
+//   return course.price > 0;
+// });
+
+// console.log(price500);
+
+// every2
+// Array.prototype.every2 = function (callback) {
+//   for (idx in this) {
+//     if (this.hasOwnProperty(idx)) {
+//       var result = callback(this[idx], idx, this);
+//       if (!result) {
+//         return false;
+//       }
+//     }
+//   }
+//   return true;
+// };
+
+// var test = courses.every2((course, index) => {
+//   console.log(index, course.price);
+//   return course.price > -1;
+// });
+
+// console.log('test', test);
+
+// some2
+// Array.prototype.some2 = function (callback) {
+//   for (idx in this) {
+//     if (this.hasOwnProperty(idx)) {
+//       var result = callback(this[idx], idx, this);
+//       if (result) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// };
+
+// var test = courses.some((course, index) => {
+//   console.log(index, course.price);
+//   return course.price > 0;
+// });
+
+// console.log('test', test);
+
+// reduce2
+// Array.prototype.reduce2 = function (callback, result) {
+//   var i = 0,
+//     length = this.length;
+
+//   //Nếu số lượng tham số lớn hơn < 2
+//   if (arguments.length < 2) {
+//     i = 1;
+//     result = this[0]; // result = giá trị đầu tiên của array
+//   }
+
+//   while (i < length) {
+//     result = callback(result, this[i], i, this);
+//     i++;
+//   }
+
+//   return result;
+// };
+
+// var sum = courses.reduce2((totalPrice, course) => {
+//   return totalPrice + course.price;
+// }, 0);
+
+// console.log(sum);
+
+// Empty element of array
+
+// var courses = ['Javascript', 'PHP'];
+// courses.length = 10;
+// Dùng vòng for thường sẽ duyệt qua cả empty elêmnt và phần tử thực
+// for (var i = 0; i < courses.length; i++) {
+//   console.log(courses[i]);
+// }
+
+// Nên sử dụng for/in để duyệt các phần tử thực tránh empty element
+// for (var index in courses) {
+//   console.log(courses[index]);
+// }
+
+// var arr = new Array(10); // TH tạo mảng 10 element cũng tạo ra empty element
+// console.log(arr); // 10 empty elements
+// arr.push('JS', 'C#');
+// console.log(arr); // 12 value: 10 empty elements và 2 value mới push vào
+
+// var arr2 = new Array(10, 12, 'Hello'); // Truyền ít nhất 2 giá trị thì các giá trị đưa vào sẽ là element của array
+// console.log(arr2);
+
+// Lọc trùng với Set
+// var arr = ['a', 'b', 'c', 'a', 'b', 'c'];
+
+// Set (đặc tính các phần tử trong Set k0 được trùng nhau)
+// console.log(new Set(arr));
+// Toán tử ... new Set(arr): Set(3){'a','b','c'} => 'a','b','c'
+// console.log([...new Set(arr)]); // Convert sang array
+
+// Đệ quy
+/*
+A -> Loop -> CPU
+A -> Recursion --> RAM (memory overflow)
+Functional Programing
+*/
+
+/*
+Usage:
+  1.Xác định điểm dừng
+  2.Logic handle => Tạo ra điểm dừng
+*/
+
+// function countDown(num) {
+//   if (num > 0) {
+//     console.log(num);
+//     return countDown(num - 1);
+//   }
+//   return num;
+// }
+
+// console.log(countDown(5));
+
+// Mô phỏng bằng đệ quy
+// function loop(start, end, callback) {
+//   if (start < end) {
+//     callback(start);
+//     return loop(start + 1, end, callback);
+//   }
+// }
+
+// loop(1, 11, (i) => {
+//   console.log(i);
+// });
+
+// var arr = ['JS', 'PHP', 'Ruby'];
+// loop(0, arr.length, (i) => {
+//   console.log(arr[i]);
+// });
+
+// function run(x, y, output = []) {
+//   var value = x + 1;
+//   if (x < y - 1) {
+//     output.push(value);
+//     return run(value, y, output);
+//   }
+
+//   return output;
+// }
+
+// var arr = run(0, 10);
+// console.log(arr);
+
+// Tính giai thừa 5!
